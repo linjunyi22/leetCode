@@ -73,7 +73,7 @@ class Solution:
         	return False
         return True
 
-test = Solution().isValid('){([)]()')
+test = Solution().isValid('){([)]()}')
 print(test)
 
 
