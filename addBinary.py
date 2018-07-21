@@ -1,40 +1,26 @@
 """
+Given two binary strings, return their sum (also a binary string).
+The input strings are both non-empty and contains only characters 1 or 0.
+
+给定两个二进制字符串，返回他们的和（用二进制表示）。
+输入为非空字符串且只包含数字 1 和 0。
+
+示例 1:
+输入: a = "11", b = "1"
+输出: "100"
+
+示例 2:
+输入: a = "1010", b = "1011"
+输出: "10101"
 """
 class Solution(object):		
 	def addBinary(self, a, b):
-		import math
-		
-		i = 0
-		sum_a = 0 # 保存二进制a转换为十进制后的值
-		sum_b = 0
-		a = int(a) # 因为输入的是二进制字符串
-		b = int(b)
-		while a:
-		    dec = a % 2 # 取出最后一个数字
-		    sum_a += dec * pow(2, i) # 将每一位二进制数与其位权相乘，然后相加就得到了十进制数
-		    a = a // 10  # 是两数相除，留下整数部分，除去最后一位
-		    i += 1
-
-		i = 0
-		while b:
-		    dec = b % 2
-		    sum_b += dec * pow(2, i)
-		    b = b // 10
-		    i += 1
-
-		sum = sum_a + sum_b 
-		temp = []
-		result = ''
-
-		while sum:
-		    dec = sum % 2
-		    sum = sum // 2
-		    temp.append(dec)
-		while temp:
-		    result += str(temp.pop())
-
-		result = int(result)
+		a = int(a,2)
+		b = int(b,2)
+		tmp = a + b
+		tmp = bin(tmp)
+		result = tmp[2:]
 		return result
 
-test = Solution().addBinary(1001,100)
+test = Solution().addBinary('0','0')
 print(test)
