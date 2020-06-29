@@ -30,6 +30,8 @@
 #         self.left = None
 #         self.right = None
 
+
+# 层次遍历，迭代
 class Solution:
     def averageOfLevels(self, root: TreeNode) -> List[float]:
         if not root:
@@ -49,3 +51,19 @@ class Solution:
                     res.append(sum([i.val for i in layList])/len(layList))
                 layList = []
         return res
+
+
+# 深度搜索，递归
+class Solution:
+    def averageOfLevels(self, root: TreeNode) -> List[float]:
+        def helper(node, depth, layList):
+            if node:
+                if len(layList) - 1 < depth:
+                    layList.append([])
+                layList[depth].append(node.val)
+                helper(node.left, depth + 1, layList)
+                helper(node.right, depth + 1, layList)
+            return
+        res = []
+        helper(root, 0, res)
+        return [sum(i)/len(i) for i in res]
