@@ -40,9 +40,9 @@ class Solution:
         count = 1
         for i in nums[1:]:
             if count == 0:
-                res = res[i]
+                res = i
                 count = 1
-            elif res == nums[i]:
+            elif res == i:
                 res += 1
             else:
                 res -= 1
